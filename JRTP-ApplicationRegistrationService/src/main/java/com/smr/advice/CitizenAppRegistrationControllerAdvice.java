@@ -11,12 +11,19 @@ import com.smr.exceptions.InvalidSSNException;
 public class CitizenAppRegistrationControllerAdvice {
 
 	@ExceptionHandler(InvalidSSNException.class)
-	public ResponseEntity<String> handleInvalidSSN(InvalidSSNException exception){
-		return new ResponseEntity<String>(exception.getMessage(),HttpStatus.BAD_REQUEST);
+	public ResponseEntity<ExceptionInfo> handleInvalidSSN(InvalidSSNException ie){
+		ExceptionInfo info = new ExceptionInfo();
+		info.setMessage(ie.getMessage());
+		info.setCode(3000);
+		return new ResponseEntity(info,HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 	@ExceptionHandler(Exception.class)
-	public ResponseEntity<String> handleAllException(Exception exception){
-		return new ResponseEntity<String>(exception.getMessage(),HttpStatus.BAD_REQUEST);
+	public ResponseEntity<ExceptionInfo> handleAllException(Exception e){
+		ExceptionInfo info = new ExceptionInfo();
+		info.setMessage(e.getMessage());
+		info.setCode(3000);
+		return new ResponseEntity(info,HttpStatus.INTERNAL_SERVER_ERROR);
+
 	}
 }
