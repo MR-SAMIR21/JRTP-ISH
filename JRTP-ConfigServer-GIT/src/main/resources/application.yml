@@ -1,0 +1,16 @@
+# Conversion to YAML from Properties formar report
+# Warnings:
+# - The yaml file had comments which are lost in the refactoring!
+spring:
+  application:
+    name: JRTP-ConfigServer-GIT
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitlab.com/samirkumarpanjha-group/jrtp-majorproj.git
+          skipSslValidation: true
+          clone-on-start: true
+        bootstrap: false
+server:
+  port: 8888
