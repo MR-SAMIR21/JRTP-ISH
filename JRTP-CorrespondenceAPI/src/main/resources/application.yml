@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: JRTP-CorrespondenceAPI
+  config:
+    import: optional:configserver:http://localhost:8888
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql:///jrtp-ish-db
+##  ldap:
+#    username: root
+#    password: 757052
+#
+## jpa -hibernate properties
+#  jpa:
+#    show-sql: true
+#    database-platform: org.hibernate.dialect.MySQLDialect
+#    hibernate:
+#      ddl-auto: update
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: mr.samir151103@gmail.com
+    password: xnihuywdzperlicl
+    properties:
+      mail:
+        transport:
+        protocol: smtp
+        smtp:
+          port: 587
+          auth: true
+          starttls:
+            enable: true
+            required: true
+server:
+  port: 7075  
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
+
+
+
