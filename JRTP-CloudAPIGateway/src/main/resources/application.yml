@@ -1,0 +1,39 @@
+# Conversion to YAML from Properties formar report
+# Warnings:
+# - The yaml file had comments which are lost in the refactoring!
+spring:
+  application:
+    name: JRTP-CloudAPIGateway
+  cloud:
+    gateway:
+      routes:
+      - id: JRTP-AdminService
+        uri: http://localhost:7074/
+        predicates:
+        - Path=/plan-api/**
+      - id: JRTP-ApplicationRegistrationService
+        uri: http://localhost:7071/
+        predicates:
+        - Path=/bi-api/**
+      - id: JRTP-(BI)BenefitInsuranceAPI
+        uri: http://localhost:7076/
+        predicates:
+        - Path=/CitizenAR-api/**
+      - id: JRTP-CorrespondenceAPI
+        uri: http://localhost:7075/
+        predicates:
+        - Path=/co-triggers-api/**
+      - id: JRTP-DataCollectionService
+        uri: http://localhost:7072/
+        predicates:
+        - Path=/dc-api/**
+      - id: JRTP-ElgibilityDeterminationService
+        uri: http://localhost:7073/
+        predicates:
+        - Path=/ed-api/**
+server:
+  port: 7777
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
